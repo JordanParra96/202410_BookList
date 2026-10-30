@@ -8,7 +8,7 @@ import { faker } from '@faker-js/faker';
 import { BookListComponent } from './book-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Editorial } from '../../editorial/editorial';
-import { Book } from '../book';
+import { BookDetail } from '../BookDetail';
 import { BookService } from '../book.service';
 
 
@@ -40,7 +40,7 @@ describe('BookListComponent', () => {
 
 
     for(let i = 0; i < 10; i++) {
-      const book = new Book(
+      const book = new BookDetail(
         faker.number.int(),
         faker.lorem.sentence(),
         faker.lorem.sentence(),
@@ -48,6 +48,8 @@ describe('BookListComponent', () => {
         faker.image.url(),
         faker.date.past(),
         editorial,
+        [],
+        []
       );
       component.books.push(book);
     }
