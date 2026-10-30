@@ -27,6 +27,13 @@
        <hr />
        <dt class="bold">Description</dt>
        <dd>{{ bookDetail.description }}</dd>
+       <hr />
+       <dt class="bold">Reviews</dt>
+       <dd class="review" *ngFor="let review of bookDetail.reviews">
+         <p class="review-name fw-bold mb-1">{{ review.name }}</p>
+         <p class="review-description mb-1">{{ review.description }}</p>
+         <small class="review-source text-muted">{{ review.source }}</small>
+       </dd>
      </dl>
    </div>
  </div>

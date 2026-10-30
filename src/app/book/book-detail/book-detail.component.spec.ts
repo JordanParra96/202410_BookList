@@ -8,6 +8,7 @@ import { Editorial } from '../../editorial/editorial';
 import { faker } from '@faker-js/faker';
 import { Author } from '../../author/Author';
 import { BookDetail } from '../BookDetail';
+import { Review } from '../Review';
 
 describe('BookDetailComponent', () => {
   let component: BookDetailComponent;
@@ -45,6 +46,17 @@ describe('BookDetailComponent', () => {
     authors.push(author);
   }
 
+   const reviews: Review[] = [];
+   for (let i = 0; i < 3; i++) {
+    const review = new Review (
+      faker.number.int(),
+      faker.lorem.word(),
+      faker.lorem.sentence(),
+      faker.lorem.paragraph(),
+    );
+    reviews.push(review);
+  }
+
 
    component.bookDetail= new BookDetail(
        faker.number.int(),
@@ -55,7 +67,7 @@ describe('BookDetailComponent', () => {
        faker.date.past(),
        editorial,
        authors,
-       []
+       reviews
      );
 
 
@@ -110,6 +122,19 @@ describe('BookDetailComponent', () => {
      return value.nativeElement.textContent == 'Editorial';
    });
    expect(node?.nativeElement.nextSibling.textContent).toContain(component.bookDetail.editorial.name);
+ });
+
+ it('should have 3 <dd.review> elements', () => {
+   expect(debug.queryAll(By.css('dd.review'))).toHaveSize(3)
+ });
+
+ it('should show the name, description and source of each review', () => {
+   debug.queryAll(By.css('dd.review')).forEach((dd, i) => {
+     const review = component.bookDetail.reviews[i];
+     expect(dd.query(By.css('.review-name')).nativeElement.textContent).toContain(review.name);
+     expect(dd.query(By.css('.review-description')).nativeElement.textContent).toContain(review.description);
+     expect(dd.query(By.css('.review-source')).nativeElement.textContent).toContain(review.source);
+   });
  });
 
 });
