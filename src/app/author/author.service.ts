@@ -5,16 +5,20 @@ import { AuthorDetail } from './author-detail';
 import { environment } from './../../environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+ providedIn: 'root'
 })
 export class AuthorService {
 
-  private apiUrl: string = environment.baseUrl + 'authors';
+ private apiUrl: string = environment.baseUrl + 'authors';
 
-  constructor(private http: HttpClient) { }
+ constructor(private http: HttpClient) { }
 
-  getAuthors(): Observable<AuthorDetail[]> {
-    return this.http.get<AuthorDetail[]>(this.apiUrl);
-  }
+ getAuthors(): Observable<AuthorDetail[]> {
+   return this.http.get<AuthorDetail[]>(this.apiUrl);
+ }
 
+ getAuthor(id: string): Observable<AuthorDetail> {
+   return this.http.get<AuthorDetail>(this.apiUrl + "/" + id);
+ }
+ 
 }
