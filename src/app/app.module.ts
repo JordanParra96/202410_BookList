@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthorModule } from './author/author.module';
 import { BookRoutingModule } from './book/book-routing.module';
 import { AuthorRoutingModule } from './author/author-routing.module';
+import { EditorialRoutingModule } from './editorial/editorial-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthorRoutingModule } from './author/author-routing.module';
     HttpClientModule,
     AuthorModule,
     BookRoutingModule,
-    AuthorRoutingModule
+    AuthorRoutingModule,
+    EditorialRoutingModule
   ],
   providers: [
     provideClientHydration()
