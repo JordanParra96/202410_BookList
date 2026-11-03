@@ -22,7 +22,7 @@
         <p class="h3">Books by this author:</p>
         <ul>
           <li *ngFor="let book of authorDetail.books">
-            {{ book.name }}
+            <a routerLink="/books/{{ book.id }}">{{ book.name }}</a>
           </li>
         </ul>
       </div>
