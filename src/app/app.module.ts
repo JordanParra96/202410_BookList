@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BookModule } from './book/book.module';
 import { EditorialModule } from './editorial/editorial.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BookRoutingModule } from './book/book-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BookModule,
     EditorialModule,
-    HttpClientModule
+    HttpClientModule,
+    BookRoutingModule
   ],
   providers: [
     provideClientHydration()
